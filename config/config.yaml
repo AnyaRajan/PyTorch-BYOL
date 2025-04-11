@@ -1,10 +1,8 @@
 network:
   name: resnet18
+  fine_tune_from: null  # or 'resnet-18_40-epochs' if you have a pretrained checkpoint
 
-  # Specify a folder containing a pre-trained model to fine-tune. If training from scratch, pass None.
-  fine_tune_from: 'resnet-18_40-epochs'
-
-  projection_head:
+  projection_head: 
     mlp_hidden_size: 512
     projection_size: 128
 
@@ -14,7 +12,7 @@ data_transforms:
 
 trainer:
   batch_size: 64
-  m: 0.996 # momentum update
+  m: 0.996
   checkpoint_interval: 5000
   max_epochs: 40
   num_workers: 4
